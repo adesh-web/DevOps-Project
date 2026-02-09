@@ -1,5 +1,5 @@
 environment = "dev"
-aws_region = "us-east-1"
+aws_region = "eu-north-1"
 
 # RDS Variables
 instance_class        = "db.t3.micro"
@@ -15,5 +15,5 @@ min_size          = 2
 instance_type = "m7i-flex.large"
 
 # S3 Variables
-bucket_name = "Project-Bucket"
+bucket_name = "project-17-bucket"
 
