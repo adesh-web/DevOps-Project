@@ -1,5 +1,5 @@
 ########## Create an S3 bucket for static website hosting ##########
-resource "aws_s3_bucket" "tfstate-file-store-bucket" {
+resource "aws_s3_bucket" "my-bucket" {
   bucket = var.bucket_name
 
   ########## Enable static website hosting ########## 
@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "tfstate-file-store-bucket" {
 
 ########## Disable Block Public Access ##########
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.tfstate-file-store-bucket.bucket
+  bucket = aws_s3_bucket.my-bucket.bucket
 
   block_public_acls       = false
   block_public_policy     = false
@@ -26,7 +26,7 @@ resource "aws_s3_bucket_public_access_block" "example" {
 
 ########## Set the bucket policy to allow public read access (use cautiously) ##########
 resource "aws_s3_bucket_policy" "static_website_policy" {
-  bucket = aws_s3_bucket.tfstate-file-store-bucket.id
+  bucket = aws_s3_bucket.my-bucket.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -35,7 +35,7 @@ resource "aws_s3_bucket_policy" "static_website_policy" {
         Effect    = "Allow"
         Principal = "*"
         Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.tfstate-file-store-bucket.arn}/*"
+        Resource  = "${aws_s3_bucket.my-bucket.arn}/*"
       }
     ]
   })
@@ -44,6 +44,6 @@ resource "aws_s3_bucket_policy" "static_website_policy" {
 
 ########## Output the bucket's website endpoint ##########
 output "website_endpoint" {
-  value       = aws_s3_bucket.tfstate-file-store-bucket.website_endpoint
+  value       = aws_s3_bucket.my-bucket.website_endpoint
   description = "The URL to access the static website"
 }
