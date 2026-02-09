@@ -15,5 +15,5 @@ min_size          = 2
 instance_type = "m7i-flex.large"
 
 # S3 Variables
-bucket_name = "project-17-bucket"
+bucket_name = "project-1709-bucket"
 
