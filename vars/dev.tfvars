@@ -15,5 +15,5 @@ min_size          = 2
 instance_type = "m7i-flex.large"
 
 # S3 Variables
-bucket_name = "radison-hms-frontend-Project"
+bucket_name = "Project-Bucket"
 
