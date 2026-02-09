@@ -1,6 +1,6 @@
 terraform {
     backend "s3" {
-        bucket = "radison-infra-bucket"
+        bucket = "tfstate-file-store-bucket"
         region = "us-east-1"
         key = "terraform.tfstate"
     }
