@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  labels: 
+    app: reservation-app
+  name: reservation-app-service
+spec: 
+  ports:  
+    - name: java
+      protocol: TCP
+      targetPort: 8080
+      port: 8080
+  type: NodePort
+  selector:
+    app: reservation-app
